@@ -54,25 +54,39 @@ export default class Overlay extends React.Component {
 
         const renderTeam = (teamName, teamConfig, teamState) => (
             <div className={cx(css.Team, teamName)}>
+                <div className={cx(css.TeamScoreBar, teamName)}>
+                    <div className={cx(css.TeamName, {[css.WithoutCoaches]: !config.frontend.coachesEnabled})} style={{fontSize:"30px"}}>
+                        {teamName === css.TeamBlue && config.frontend.scoreEnabled && <span style={{textAlign:"left", fontSize:"50px", float:"left"}}>
+                        &nbsp;&nbsp;&nbsp;{teamConfig.score}
+                        </span>}
+                        {teamName === css.TeamRed && config.frontend.scoreEnabled && <span style={{textAlign:"left", fontSize:"50px", float:"right"}}>
+                            {teamConfig.score}&nbsp;&nbsp;&nbsp;
+                        </span>}
+                        {teamConfig.name}
+                        {config.frontend.coachesEnabled && <div className={css.CoachName} style={{fontSize:"15px"}}>
+                            Coach: {teamConfig.coach}
+                        </div>}
+                    </div>
+                </div>
                 <div className={cx(css.Picks)}>
                     {teamState.picks.map((pick, idx) => <Pick key={`pick-${idx}`} config={this.props.config} {...pick} />)}
                 </div>
                 <div className={css.BansWrapper}>
                     <div className={cx(css.Bans, {[css.WithScore]: config.frontend.scoreEnabled})}>
-                        {teamName === css.TeamBlue && config.frontend.scoreEnabled && <div className={css.TeamScore}>
+                        {/* {teamName === css.TeamBlue && config.frontend.scoreEnabled && <div className={css.TeamScore}>
                             {teamConfig.score}
-                        </div>}
+                        </div>} */}
                         {teamName === css.TeamRed && renderBans(teamState)}
-                        <div className={cx(css.TeamName, {[css.WithoutCoaches]: !config.frontend.coachesEnabled})}>
+                        {/* <div className={cx(css.TeamName, {[css.WithoutCoaches]: !config.frontend.coachesEnabled})}>
                             {teamConfig.name}
                             {config.frontend.coachesEnabled && <div className={css.CoachName}>
                                 Coach: {teamConfig.coach}
                             </div>}
-                        </div>
+                        </div> */}
                         {teamName === css.TeamBlue && renderBans(teamState)}
-                        {teamName === css.TeamRed && config.frontend.scoreEnabled && <div className={css.TeamScore}>
+                        {/* {teamName === css.TeamRed && config.frontend.scoreEnabled && <div className={css.TeamScore}>
                             {teamConfig.score}
-                        </div>}
+                        </div>} */}
                     </div>
                 </div>
             </div>
@@ -83,10 +97,10 @@ export default class Overlay extends React.Component {
                 {Object.keys(state).length === 0 && <div className={cx(css.infoBox)}>Not connected to backend service!</div>}
                 {Object.keys(state).length !== 0 &&
                 <div className={cx(css.ChampSelect)}>
-                    {!state.leagueConnected && <div className={cx(css.infoBox)}>Not connected to client!</div> }
+                    {/* {!state.leagueConnected && <div className={cx(css.infoBox)}>Not connected to client!</div>  } */}
                     <div className={cx(css.MiddleBox)}>
                         <div className={cx(css.Logo)}>
-                            <img src={logo} alt="" />
+                            {/* <img src={logo} alt="" /> */}
                         </div>
                         <div className={cx(css.Patch)}>
                             {state.state}

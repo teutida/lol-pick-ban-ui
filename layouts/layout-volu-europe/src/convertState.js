@@ -26,7 +26,7 @@ const putPlaceholders = (team,  backendUrl) => {
       // Does not exists, push
       team.picks.push({
         champion: {
-          loadingImg: pickSplashes[i]
+          splashCenteredImg: pickSplashes[i]
         }
       });
     } else {
@@ -34,7 +34,7 @@ const putPlaceholders = (team,  backendUrl) => {
       const pick = team.picks[i];
       if (!pick.champion || !pick.champion.loadingImg) {
         pick.champion = {
-          loadingImg: pickSplashes[i]
+          splashCenteredImg: pickSplashes[i]
         };
         // pick.spell1 = null;
         // pick.spell2 = null;
@@ -46,6 +46,8 @@ const putPlaceholders = (team,  backendUrl) => {
       if (pick.spell2) {
         pick.spell2.icon = makeUrlAbsolute(pick.spell2.icon, backendUrl);
       }
+      console.log(pick);
+      pick.champion.splashCenteredImg = makeUrlAbsolute(pick.champion.splashCenteredImg, backendUrl);
       pick.champion.loadingImg = makeUrlAbsolute(pick.champion.loadingImg, backendUrl);
       pick.champion.splashImg = makeUrlAbsolute(pick.champion.splashImg, backendUrl);
       pick.champion.squareImg = makeUrlAbsolute(pick.champion.squareImg, backendUrl);

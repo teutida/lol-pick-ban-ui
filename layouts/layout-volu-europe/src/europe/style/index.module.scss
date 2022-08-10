@@ -23,12 +23,13 @@ body {
         position: absolute;
         color: white;
         width: var(--box-width);
-        height: calc(var(--box-pick-height) + var(--box-ban-height));
-
-        bottom: var(--champselect-margin-bot);
+        height: 10vh;//calc(var(--box-pick-height)); // - var(--box-ban-height));
+        top: 0px;//var(--champselect-margin-bot);
         left: 50%;
         transform: translateX(-50%);
         overflow: hidden;
+        background-color: black;
+        
     }
 
     .Patch {
@@ -39,7 +40,6 @@ body {
         /* border-left: darkgrey 1px solid;
         border-right: darkgrey 1px solid; */
         /* background-color: black; */
-
         z-index: 10;
     }
 
@@ -49,17 +49,16 @@ body {
         /* border-left: darkgrey 1px solid;
         border-right: darkgrey 1px solid; */
         /* background-color: black; */
-
         z-index: 10;
 
-        img {
-            width: 80%;
-            height: 80%;
-            margin: 0 auto;
-            padding-top: 10%;
-            display: block;
-            object-fit: contain;
-        }
+        // img {
+        //     width: 80%;
+        //     height: 80%;
+        //     margin: 0 auto;
+        //     padding-top: 10%;
+        //     display: block;
+        //     object-fit: contain;
+        // }
     }
 
     @import "./timer";

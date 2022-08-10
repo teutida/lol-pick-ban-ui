@@ -45,10 +45,11 @@
 
 .BansWrapper {
   overflow: hidden;
+  // width: -700px;
 }
 
 .BansBox {
-  display: flex;
+  display:flex;
 }
 
 @keyframes pulsate-ban {
