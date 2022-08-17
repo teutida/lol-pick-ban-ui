@@ -3,6 +3,9 @@
   height: var(--box-ban-height);
   display: flex;
   box-sizing: border-box;
+  justify-content:space-between;
+  margin-right: 11vh;
+  margin-left: 11vh;
 
   .Ban {
     display: block;
@@ -43,6 +46,9 @@
   flex-direction: row-reverse;
 }
 
+// &.TeamBlue .Bans{
+//   margin-left: 50vh;
+// }
 .BansWrapper {
   overflow: hidden;
   // width: -700px;

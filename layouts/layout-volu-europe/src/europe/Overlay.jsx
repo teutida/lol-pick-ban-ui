@@ -52,15 +52,15 @@ export default class Overlay extends React.Component {
             return <div className={cx(css.BansBox)}>{list}</div>;
         };
 
-        const renderTeam = (teamName, teamConfig, teamState) => (
+        const renderTeam = (teamName, teamConfig, teamState, teamCode, EnemyScore) => (
             <div className={cx(css.Team, teamName)}>
                 <div className={cx(css.TeamScoreBar, teamName)}>
                     <div className={cx(css.TeamName, {[css.WithoutCoaches]: !config.frontend.coachesEnabled})} style={{fontSize:"30px"}}>
                         {teamName === css.TeamBlue && config.frontend.scoreEnabled && <span style={{textAlign:"left", fontSize:"50px", float:"left"}}>
-                        &nbsp;&nbsp;&nbsp;{teamConfig.score}
+                        &nbsp;&nbsp;&nbsp;{`${teamConfig.score}W-${EnemyScore}L`}
                         </span>}
                         {teamName === css.TeamRed && config.frontend.scoreEnabled && <span style={{textAlign:"left", fontSize:"50px", float:"right"}}>
-                            {teamConfig.score}&nbsp;&nbsp;&nbsp;
+                            {`${teamConfig.score}W-${EnemyScore}L`}&nbsp;&nbsp;&nbsp;    
                         </span>}
                         {teamConfig.name}
                         {config.frontend.coachesEnabled && <div className={css.CoachName} style={{fontSize:"15px"}}>
@@ -121,8 +121,8 @@ export default class Overlay extends React.Component {
                             </div>}
                         </div>
                     </div>
-                    {renderTeam(css.TeamBlue, config.frontend.blueTeam, state.blueTeam)}
-                    {renderTeam(css.TeamRed, config.frontend.redTeam, state.redTeam)}
+                    {renderTeam(css.TeamBlue, config.frontend.blueTeam, state.blueTeam, 'blue', config.frontend.redTeam.score)}
+                    {renderTeam(css.TeamRed, config.frontend.redTeam, state.redTeam, 'red', config.frontend.blueTeam.score)}
                 </div>}
             </div>
         )
